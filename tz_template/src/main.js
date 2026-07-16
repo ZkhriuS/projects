@@ -1,7 +1,7 @@
 
 // прототип геймплея
 
-options.__soundDisabled = 0; 
+options.__soundDisabled = 0;
 
 var level
     , rubber
@@ -37,7 +37,7 @@ function relImpactSpeed(bodyA, bodyB) {
     return v.__length();
 }
 
-function addBreakBlock(x, y, velocity){
+function addBreakBlock(x, y, velocity) {
     var breack_block = level.__addChildBox({
         __img: 'break_' + randomInt(1, 9),
         __ofs: [x, y, -20],
@@ -53,8 +53,8 @@ function addBreakBlock(x, y, velocity){
         }
     });
     looperPost(a => {
-        if (breack_block.__ph_body){ 
-            ph_Body.setVelocity(breack_block.__ph_body, new Vector2(velocity.x + randomFloat(-10, 10),velocity.y + randomFloat(-8, 3)));
+        if (breack_block.__ph_body) {
+            ph_Body.setVelocity(breack_block.__ph_body, new Vector2(velocity.x + randomFloat(-10, 10), velocity.y + randomFloat(-8, 3)));
             _setTimeout(() => {
                 if (breack_block.__ph_body) {
                     initCollision(breack_block.__ph_body, breack_block, 50);
@@ -69,29 +69,29 @@ function addBreakBlock(x, y, velocity){
     });
 }
 
-function awakeBlocks(){
+function awakeBlocks() {
 
     $each(blocks, b => {
         b.__ph_awake();
     });
 }
 
-function removeBlock(block){
+function removeBlock(block) {
     removeFromArray(block, blocks);
     var size = block.__size, v = block.__ph_body.velocity;
 
     block.__removeFromParent();
 
     looperPostOne(awakeBlocks);
-    
-    
+
+
     if (block.__needBreaks) {
-        
+
         playSound('break_' + randomInt(1, 4), 0, 0, 0.5);
-        
+
         var step = 50,
-            bx = block.__x - size.x/2, 
-            by = block.__y - size.y/2;
+            bx = block.__x - size.x / 2,
+            by = block.__y - size.y / 2;
 
         // todo: не учитывается вращение блока
         for (var x = 0; x < size.x; x += step) {
@@ -114,7 +114,7 @@ function removeBlock(block){
 
 }
 
-function initCollision(body, node, hp){
+function initCollision(body, node, hp) {
     blocks.push(node);
     body.__hp = hp;
     body.__onCollision = (speed) => {
@@ -142,7 +142,7 @@ function show_win() {
         wnd.__setAliasesData({
 
             button: {
-                __onTap(){
+                __onTap() {
                     // todo: стартовать другой уровень?
                     consoleLog("not implemented")
                 },
@@ -154,7 +154,7 @@ function show_win() {
 
 }
 
-function initLevel(){
+function initLevel() {
 
     // добавляем первый уровень на сцену
     level = scene
@@ -169,9 +169,15 @@ function initLevel(){
                 __dragDist: 1,
                 __drag(x, y, dx, dy) {
                     // натягиваем резинку
-                    var dmouse = this.__dmouse = this.__worldPosition.__clone().sub(new Vector2(x, y));
-                    rubber.__parent.__rotate = -dmouse.__angle() * RAD2DEG;
-                    rubber.__width = dmouse.__length();
+                    var wp = this.__worldPosition.__clone()
+                        , vmouse = new Vector2(x, y)
+                        , dmouse = vmouse.sub(wp)
+                        , strength = dmouse.__length()
+                        , angle = clamp((dmouse.__angle() - PI) * RAD2DEG, -75, 30);
+
+                    this.__dmouse = new Vector2(strength * Math.cos(angle * DEG2RAD), strength * Math.sin(angle * DEG2RAD));
+                    rubber.__parent.__rotate = -angle;
+                    rubber.__width = strength;
                 },
                 __dragStart() {
                     rubber.__killAllAnimations();

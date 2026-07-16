@@ -13,38 +13,93 @@
           1,
           1,
           1
-        ]
-      },
-      "userInputArea": {
-        "__color": "#5f12e9",
-        "sha": 0,
-        "sva": 2,
-        "__size": [
-          140,
-          100
-        ],
-        "__ofs": [
-          105,
-          -96,
-          -15
         ],
         "__childs": {
-          "_0": {
-            "__color": "#fb22a0",
-            "__rotate": 3.9,
+          "body": {
+            "__img": "snowman",
+            "ha": 2,
+            "va": 1,
+            "sha": 0,
+            "sva": 2,
             "__size": [
-              25,
-              25
+              80,
+              80
+            ],
+            "__ofs": [
+              105,
+              -96,
+              -15
             ],
             "__childs": {
-              "rubber": {
-                "__color": "#362207",
-                "sha": 2,
+              "userInputArea": {
+                "__color": "#599d52",
+                "__alpha": 0.7,
+                "ha": 1,
+                "va": 1,
+                "sha": 1,
                 "sva": 1,
                 "__size": [
-                  148,
-                  18
-                ]
+                  175,
+                  175
+                ],
+                "__ofs": [
+                  -78,
+                  -6,
+                  4
+                ],
+                "__childs": {
+                  "branch_l": {
+                    "__color": 0.3424,
+                    "__rotate": 76,
+                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho",
+                    "__size": [
+                      45,
+                      45
+                    ],
+                    "__ofs": [
+                      23,
+                      7,
+                      -5
+                    ]
+                  },
+                  "branch_r": {
+                    "__color": 0.3424,
+                    "__rotate": -69,
+                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho",
+                    "sha": 1,
+                    "sva": 0,
+                    "__size": [
+                      -26,
+                      39,
+                      "o",
+                      "o"
+                    ],
+                    "__ofs": [
+                      124,
+                      69,
+                      -3
+                    ]
+                  },
+                  "_2": {
+                    "__color": 0.3424,
+                    "__size": [
+                      25,
+                      25
+                    ],
+                    "__z": -24,
+                    "__childs": {
+                      "rubber": {
+                        "__color": "#362207",
+                        "sha": 2,
+                        "sva": 1,
+                        "__size": [
+                          100,
+                          18
+                        ]
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -87,7 +142,11 @@
               1234,
               211
             ],
-            "__y": 395
+            "__ofs": [
+              0,
+              395,
+              -10
+            ]
           },
           "_2": {
             "__physics": {

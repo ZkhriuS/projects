@@ -274,12 +274,499 @@
   }
 ]
 ,
+"layouts/level_2.json":[
+  {
+    "name": "level_0",
+    "__size": [
+      1234,
+      768
+    ],
+    "__childs": {
+      "sky": {
+        "__color": "#5c4cc0",
+        "__size": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "__childs": {
+          "body": {
+            "__img": "snowman",
+            "ha": 2,
+            "va": 1,
+            "sha": 0,
+            "sva": 2,
+            "__size": [
+              80,
+              80
+            ],
+            "__ofs": [
+              105,
+              -96,
+              -15
+            ],
+            "__childs": {
+              "userInputArea": {
+                "__color": "#599d52",
+                "__alpha": 0.7,
+                "ha": 1,
+                "va": 1,
+                "sha": 1,
+                "sva": 1,
+                "__size": [
+                  175,
+                  175
+                ],
+                "__ofs": [
+                  -78,
+                  -6,
+                  4
+                ],
+                "__childs": {
+                  "branch_l": {
+                    "__color": 0.3424,
+                    "__rotate": 76,
+                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho",
+                    "__size": [
+                      45,
+                      45
+                    ],
+                    "__ofs": [
+                      23,
+                      7,
+                      -5
+                    ]
+                  },
+                  "branch_r": {
+                    "__color": 0.3424,
+                    "__rotate": -69,
+                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho",
+                    "sha": 1,
+                    "sva": 0,
+                    "__size": [
+                      -26,
+                      39,
+                      "o",
+                      "o"
+                    ],
+                    "__ofs": [
+                      124,
+                      69,
+                      -3
+                    ]
+                  },
+                  "_2": {
+                    "__color": 0.3424,
+                    "__size": [
+                      25,
+                      25
+                    ],
+                    "__z": -24,
+                    "__childs": {
+                      "rubber": {
+                        "__color": "#362207",
+                        "sha": 2,
+                        "sva": 1,
+                        "__size": [
+                          100,
+                          18
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ph_world": {
+        "__size": [
+          1,
+          1
+        ],
+        "__childs": {
+          "_0": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_1",
+            "__ofs": [
+              296,
+              -16
+            ]
+          },
+          "ground": {
+            "__color": "#296b22",
+            "__physics": {
+              "__isStatic": true,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__size": [
+              1234,
+              211
+            ],
+            "__ofs": [
+              0,
+              395,
+              -10
+            ]
+          },
+          "_2": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_2",
+            "__ofs": [
+              299,
+              86
+            ]
+          },
+          "_3": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_3",
+            "__ofs": [
+              192,
+              207
+            ]
+          },
+          "_4": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_3",
+            "__ofs": [
+              408,
+              207
+            ]
+          },
+          "_5": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 1
+            },
+            "__img": "block_4",
+            "__size": [
+              126,
+              126
+            ],
+            "__ofs": [
+              299,
+              223
+            ]
+          },
+          "wall": {
+            "__color": "#296b22",
+            "__physics": {
+              "__isStatic": true,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__size": [
+              65,
+              689
+            ],
+            "__ofs": [
+              585,
+              -44
+            ]
+          }
+        }
+      }
+    }
+  }
+]
+,
+"layouts/level_3.json":[
+  {
+    "name": "level_0",
+    "__size": [
+      1234,
+      768
+    ],
+    "__childs": {
+      "sky": {
+        "__color": "#511388",
+        "__size": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "__childs": {
+          "body": {
+            "__img": "snowman",
+            "ha": 2,
+            "va": 1,
+            "sha": 0,
+            "sva": 2,
+            "__size": [
+              80,
+              80
+            ],
+            "__ofs": [
+              105,
+              -96,
+              -15
+            ],
+            "__childs": {
+              "userInputArea": {
+                "__color": "#599d52",
+                "__alpha": 0.7,
+                "ha": 1,
+                "va": 1,
+                "sha": 1,
+                "sva": 1,
+                "__size": [
+                  175,
+                  175
+                ],
+                "__ofs": [
+                  -78,
+                  -6,
+                  4
+                ],
+                "__childs": {
+                  "branch_l": {
+                    "__color": 0.3424,
+                    "__rotate": 76,
+                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho",
+                    "__size": [
+                      45,
+                      45
+                    ],
+                    "__ofs": [
+                      23,
+                      7,
+                      -5
+                    ]
+                  },
+                  "branch_r": {
+                    "__color": 0.3424,
+                    "__rotate": -69,
+                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho",
+                    "sha": 1,
+                    "sva": 0,
+                    "__size": [
+                      -26,
+                      39,
+                      "o",
+                      "o"
+                    ],
+                    "__ofs": [
+                      124,
+                      69,
+                      -3
+                    ]
+                  },
+                  "_2": {
+                    "__color": 0.3424,
+                    "__size": [
+                      25,
+                      25
+                    ],
+                    "__z": -24,
+                    "__childs": {
+                      "rubber": {
+                        "__color": "#362207",
+                        "sha": 2,
+                        "sva": 1,
+                        "__size": [
+                          100,
+                          18
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ph_world": {
+        "__size": [
+          1,
+          1
+        ],
+        "__childs": {
+          "_0": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_1",
+            "__ofs": [
+              296,
+              -16
+            ]
+          },
+          "ground": {
+            "__color": "#296b22",
+            "__physics": {
+              "__isStatic": true,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__size": [
+              1234,
+              211
+            ],
+            "__ofs": [
+              0,
+              395,
+              -10
+            ]
+          },
+          "_2": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_2",
+            "__ofs": [
+              299,
+              86
+            ]
+          },
+          "_3": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_3",
+            "__ofs": [
+              192,
+              207
+            ]
+          },
+          "_4": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_3",
+            "__ofs": [
+              408,
+              207
+            ]
+          },
+          "_5": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 1
+            },
+            "__img": "block_4",
+            "__size": [
+              126,
+              126
+            ],
+            "__ofs": [
+              299,
+              223
+            ]
+          },
+          "wall": {
+            "__color": "#296b22",
+            "__physics": {
+              "__isStatic": true,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__size": [
+              65,
+              689
+            ],
+            "__ofs": [
+              585,
+              -44
+            ]
+          }
+        }
+      }
+    }
+  }
+]
+,
 "layouts/win.json":[
   {
     "__color": "#28362f",
     "name": "win",
     "__alpha": 0.8,
-    "__alphaDeep": 0,
     "__size": [
       2,
       2,
@@ -481,8 +968,11 @@
           }
         }
       },
-      "button": {
-        "__color": "#832aa0",
+      "button_continue": {
+        "__color": "#dfdd44",
+        "__userData": {
+          "__isEventItem": false
+        },
         "__img": "circle1",
         "sva": 1.3,
         "__corner": [
@@ -495,8 +985,10 @@
         ],
         "__scaleF": 0,
         "__text": {
-          "__text": "try_again"
+          "__color": "#832aa0",
+          "__text": "play"
         },
+        "__y": -50,
         "__keyframes": {
           "loop": 0,
           "__loopDisabled": 1,
@@ -512,7 +1004,52 @@
               ],
               "84": [
                 0,
+                -50,
+                1,
+                1,
+                0
+              ]
+            }
+          }
+        }
+      },
+      "button_retry": {
+        "__color": "#832aa0",
+        "__userData": {
+          "__isEventItem": false
+        },
+        "__img": "circle1",
+        "sva": 1.3,
+        "__corner": [
+          11,
+          11
+        ],
+        "__size": [
+          321,
+          94
+        ],
+        "__scaleF": 0,
+        "__text": {
+          "__color": "#dfde44",
+          "__text": "try_again"
+        },
+        "__y": 50,
+        "__keyframes": {
+          "loop": 0,
+          "__loopDisabled": 1,
+          "__easing": 27,
+          "__track": {
+            "__transform": {
+              "0": [
                 0,
+                307.166,
+                0,
+                0,
+                0
+              ],
+              "84": [
+                0,
+                50,
                 1,
                 1,
                 0

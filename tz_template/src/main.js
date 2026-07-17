@@ -4,6 +4,8 @@
 options.__soundDisabled = 0;
 
 var level
+    //стартовый номер уровня
+    , n_level = 1
     , rubber
     , blocks = []
     , big_blocks = 0;
@@ -141,10 +143,19 @@ function show_win() {
     showWindow('win', wnd => {
         wnd.__setAliasesData({
 
-            button: {
+            button_continue: {
                 __onTap() {
-                    // todo: стартовать другой уровень?
-                    consoleLog("not implemented")
+                    n_level++;
+                    BUS.__post(__ON_TAP);
+                    reloadLevel();
+                },
+                __onTapHighlight: 1
+            },
+
+            button_retry: {
+                __onTap() {
+                    BUS.__post(__ON_TAP);
+                    reloadLevel();
                 },
                 __onTapHighlight: 1
             }
@@ -154,11 +165,19 @@ function show_win() {
 
 }
 
+function reloadLevel() {
+    if (n_level < 4) {
+        closeWindow('win')
+        level.__clearChildNodes();
+        initLevel();
+    }
+}
+
 function initLevel() {
 
     // добавляем первый уровень на сцену
     level = scene
-        .__addChildBox('level_1')
+        .__addChildBox('level_' + n_level)
         .__setAliasesData({
 
             rubber(node) {
@@ -224,34 +243,36 @@ function initLevel() {
 
     _setTimeout(a => {
         level.update(1);
-
-        // настраиваем коллизии для отработки повреждения блоков
-        ph_Events.on(ph_Engine, 'collisionStart', (event) => {
-            var pairs = event.pairs, i, pair, bodyA, bodyB, speed;
-            for (i = 0; i < pairs.length; i++) {
-                pair = pairs[i];
-                bodyA = pair.bodyA;
-                bodyB = pair.bodyB;
-                speed = relImpactSpeed(bodyA, bodyB);
-
-                if (bodyA && bodyA.__onCollision) bodyA.__onCollision(speed);
-                if (bodyB && bodyB.__onCollision) bodyB.__onCollision(speed);
-            }
-        });
-
-        // проходим по уровню и инициализируем блоки
-        level.__traverse(node => {
-            var body = node.__ph_body;
-            if (body && !body.isStatic) { // this is block
-                node.__needBreaks = 1;
-                big_blocks++;
-                initCollision(body, node, 100);
-            }
-        });
-
+        initCollisionSystem();
     }, 0.01);
 }
 
+// настраиваем коллизии для отработки повреждения блоков
+function initCollisionSystem() {
+    ph_Events.on(ph_Engine, 'collisionStart', (event) => {
+        var pairs = event.pairs, i, pair, bodyA, bodyB, speed;
+        for (i = 0; i < pairs.length; i++) {
+            pair = pairs[i];
+            bodyA = pair.bodyA;
+            bodyB = pair.bodyB;
+            speed = relImpactSpeed(bodyA, bodyB);
+
+            if (bodyA && bodyA.__onCollision) bodyA.__onCollision(speed);
+            if (bodyB && bodyB.__onCollision) bodyB.__onCollision(speed);
+        }
+    });
+    // проходим по уровню и инициализируем блоки
+    level.__traverse(initBlocks);
+}
+
+function initBlocks(node) {
+    var body = node.__ph_body;
+    if (body && !body.isStatic) { // this is block
+        node.__needBreaks = 1;
+        big_blocks++;
+        initCollision(body, node, 100);
+    }
+}
 
 BUS.__addEventListener(
     __ON_GAME_LOADED, a => {

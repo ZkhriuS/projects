@@ -3,10 +3,18 @@
 
 options.__soundDisabled = 0;
 
-var level
+var __ON_SCORE_CHANGED = '__ON_SCORE_CHANGED'
+    , __ON_BLOCK_NOT_BREAK = '__ON_BLOCK_NOT_BREAK'
+    , __ON_BULLET_COLLISION = '__ON_BULLET_COLLISION'
+    , BIG_BLOCK_HP = 100
+    , BREAK_BLOCK_HP = 50
+    //, level_hp
+    , level
     //стартовый номер уровня
     , n_level = 1
     , rubber
+    , score
+    , shot_breaks
     , blocks = []
     , big_blocks = 0;
 
@@ -56,10 +64,11 @@ function addBreakBlock(x, y, velocity) {
     });
     looperPost(a => {
         if (breack_block.__ph_body) {
-            ph_Body.setVelocity(breack_block.__ph_body, new Vector2(velocity.x + randomFloat(-10, 10), velocity.y + randomFloat(-8, 3)));
+            var v = new Vector2(velocity.x + randomFloat(-10, 10), velocity.y + randomFloat(-8, 3));
+            ph_Body.setVelocity(breack_block.__ph_body, v);
             _setTimeout(() => {
                 if (breack_block.__ph_body) {
-                    initCollision(breack_block.__ph_body, breack_block, 50);
+                    initCollision(breack_block.__ph_body, breack_block, BREAK_BLOCK_HP, floor(v.__length()));
                     _setTimeout(() => {
                         if (!breack_block.__destructed) {
                             removeBlock(breack_block);
@@ -124,18 +133,21 @@ function breakSound(chance) {
     }
 }
 
-function initCollision(body, node, hp) {
+function initCollision(body, node, hp, dmgMax) {
     blocks.push(node);
     body.__hp = hp;
     body.__onCollision = (speed) => {
-        var dmg = floor(clamp((speed - 1) * (speed - 2), 0, 100));
+        var dmg = calculateDamage(speed, dmgMax);
+        shot_breaks++;
         if (dmg && body.__hp) {
             // consoleLog('damage', dmg);
             body.__hp = mmax(0, body.__hp - dmg);
-            if (!body.__hp) {
+            if (!body.__hp && !windowManager.__hasOpenedWindow()) {
                 body.__onCollision = 0;
                 looperPost(a => {
                     removeBlock(node);
+                    score += dmg;
+                    BUS.__post(__ON_SCORE_CHANGED);
                 });
             }
         }
@@ -183,6 +195,7 @@ function reloadLevel() {
 
 function initLevel() {
 
+    score = 0;
     // добавляем первый уровень на сцену
     level = scene
         .__addChildBox('level_' + n_level)
@@ -208,6 +221,7 @@ function initLevel() {
                 },
                 __dragStart() {
                     rubber.__killAllAnimations();
+                    shot_breaks = 0;
                 },
                 __dragEnd() {
 
@@ -233,7 +247,8 @@ function initLevel() {
                                 __bodyType: 1
                             }
                         }).update()
-                        , velocity = this.__dmouse.__multiplyScalar(0.2);
+                        , velocity = this.__dmouse.__multiplyScalar(0.2)
+                        , dmg = calculateDamage(velocity.__length());
 
                     if (bullet.__ph_body) {
                         ph_Body.setVelocity(bullet.__ph_body, velocity);
@@ -242,7 +257,25 @@ function initLevel() {
                     // пуля исчезает через 2 сек
                     _setTimeout(() => {
                         bullet.__removeFromParent();
+                        /*if (!shot_breaks) {
+                            score -= calculateDamage(velocity.__length());
+                            BUS.__post(__ON_SCORE_CHANGED);
+                        }*/
                     }, 2);
+
+                    BUS.__addEventListener(
+                        __ON_BULLET_COLLISION, e => {
+                            if (bullet) {
+                                var body = bullet.__ph_body;
+                                if (body) {
+                                    var dmg = floor(velocity.__length());
+                                    score += ((shot_breaks) ? 1 : -1) * dmg;
+                                    BUS.__post(__ON_SCORE_CHANGED);
+                                }
+                                bullet.__removeFromParent();
+                            }
+                        }
+                    );
 
                 }
             }
@@ -255,6 +288,10 @@ function initLevel() {
     }, 0.01);
 }
 
+function calculateDamage(speed, maxBreakDmg) {
+    return floor(clamp((speed - 1) * (speed - 2), 0, maxBreakDmg));
+}
+
 // настраиваем коллизии для отработки повреждения блоков
 function initBlocksCollision() {
     ph_Events.on(ph_Engine, 'collisionStart', (event) => {
@@ -265,12 +302,19 @@ function initBlocksCollision() {
             bodyB = pair.bodyB;
             speed = relImpactSpeed(bodyA, bodyB);
 
-            if (bodyA && bodyA.__onCollision) bodyA.__onCollision(speed);
-            if (bodyB && bodyB.__onCollision) bodyB.__onCollision(speed);
+            collisionBodyHandler(bodyA, speed);
+            collisionBodyHandler(bodyB, speed);
         }
     });
     // проходим по уровню и инициализируем блоки
     level.__traverse(initBlocks);
+}
+
+function collisionBodyHandler(body, speed) {
+    if (body) {
+        if (body.__onCollision) body.__onCollision(speed);
+        BUS.__post(__ON_BULLET_COLLISION);
+    }
 }
 
 function initBlocks(node) {
@@ -278,13 +322,20 @@ function initBlocks(node) {
     if (body && !body.isStatic) { // this is block
         node.__needBreaks = 1;
         big_blocks++;
-        initCollision(body, node, 100);
+        initCollision(body, node, BIG_BLOCK_HP, 100);
     }
 }
 
-BUS.__addEventListener(
+BUS.__addEventListeners(
     __ON_GAME_LOADED, a => {
         initLevel();
         return 1;
+    },
+    __ON_SCORE_CHANGED, e => {
+        level.__setAliasesData({
+            score_text: {
+                __text: score
+            }
+        });
     }
 );

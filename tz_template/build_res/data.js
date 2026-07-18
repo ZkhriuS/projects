@@ -269,6 +269,61 @@
             ]
           }
         }
+      },
+      "ui": {
+        "ha": 1,
+        "va": 1,
+        "__size": [
+          567,
+          100
+        ],
+        "__ofs": [
+          0,
+          349,
+          -15
+        ],
+        "__childs": {
+          "shot_count_text": {
+            "__color": 0.9395,
+            "sha": 0,
+            "sva": 1,
+            "__blending": 0,
+            "__size": [
+              0.45,
+              0.6,
+              1,
+              1
+            ],
+            "__text": {
+              "__color": 0,
+              "__fontsize": 32,
+              "__lineWidth": -1,
+              "__text": "0",
+              "__fontWeight": 1
+            },
+            "__z": -10
+          },
+          "score_text": {
+            "__color": 0.9412,
+            "sha": 2,
+            "sva": 1,
+            "__blending": 0,
+            "__size": [
+              0.45,
+              0.6,
+              1,
+              1
+            ],
+            "__text": {
+              "__color": 0,
+              "__fontsize": 32,
+              "__lineWidth": -1,
+              "__text": "0",
+              "__fontWeight": 1
+            },
+            "__z": -10
+          }
+        }
       }
     }
   }

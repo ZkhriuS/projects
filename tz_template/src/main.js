@@ -89,16 +89,20 @@ function removeBlock(block) {
 
     if (block.__needBreaks) {
 
-        playSound('break_' + randomInt(1, 4), 0, 0, 0.5);
+        breakSound(1)
 
+        // done: учитывается вращение блока
         var step = 50,
             bx = block.__x - size.x / 2,
-            by = block.__y - size.y / 2;
+            by = block.__y - size.y / 2,
+            bsin = Math.sin(block.__rotate * DEG2RAD),
+            bcos = Math.cos(block.__rotate * DEG2RAD);
 
-        // todo: не учитывается вращение блока
         for (var x = 0; x < size.x; x += step) {
             for (var y = 0; y < size.y; y += step) {
-                addBreakBlock(bx + x, by + y, v);
+                var spawnx = (bx + x) * bcos + (by + y) * bsin,
+                    spawny = (bx + x) * bsin + (by + y) * bcos;
+                addBreakBlock(spawnx, spawny, v);
             }
         }
 
@@ -109,11 +113,15 @@ function removeBlock(block) {
             }, 1);
         }
     } else {
-        if (random() > 0.5 && !windowManager.__hasOpenedWindow()) {
-            playSound('break_' + randomInt(1, 4), 0, 0, 0.5);
-        }
+        breakSound(0.5);
     }
 
+}
+
+function breakSound(chance) {
+    if (random() > (1 - chance) && !windowManager.__hasOpenedWindow()) {
+        playSound('break_' + randomInt(1, 4), 0, 0, 0.5);
+    }
 }
 
 function initCollision(body, node, hp) {
@@ -243,12 +251,12 @@ function initLevel() {
 
     _setTimeout(a => {
         level.update(1);
-        initCollisionSystem();
+        initBlocksCollision();
     }, 0.01);
 }
 
 // настраиваем коллизии для отработки повреждения блоков
-function initCollisionSystem() {
+function initBlocksCollision() {
     ph_Events.on(ph_Engine, 'collisionStart', (event) => {
         var pairs = event.pairs, i, pair, bodyA, bodyB, speed;
         for (i = 0; i < pairs.length; i++) {

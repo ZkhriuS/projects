@@ -28,6 +28,7 @@
             "windows.js"
         ],
         "src/": [
+            "level.js",
             "loading.js",
             "main.js"
         ],

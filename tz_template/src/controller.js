@@ -12,7 +12,6 @@ var MIN_SHOT_DEG = -75
             },
             __dragStart() {
                 rubber.__killAllAnimations();
-                //shot_breaks = 0;
             },
             __dragEnd() {
                 playSound('punch');

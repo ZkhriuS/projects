@@ -17,19 +17,18 @@ function initBullet(wp) {
     if (bullet.__ph_body) {
         ph_Body.setVelocity(bullet.__ph_body, rubber.__velocity);
     }
+    controller.__breaks = 0;
+}
+
+bullet.__damage = (body) => {
+    return ((controller.__breaks) ? 1 : -1) * floor(
+        ph_Body.getVelocity(body).__length());
 }
 
 BUS.__addEventListener(
     __ON_BULLET_OUT, e => {
-        if (bullet) {
-            if (bullet.__ph_body) {
-                bullet.__dmg = floor(ph_Body
-                    .getVelocity(bullet.__ph_body)
-                    .__length());
-                score += ((shot_breaks) ? 1 : -1) * bullet.__dmg;
-            }
-            BUS.__post(__ON_SCORE_CHANGED);
-
+        if (bullet && bullet.__ph_body) {
+            levelData.__changeScore(bullet.__damage(bullet.__ph_body))
             bullet.__removeFromParent();
         }
     }

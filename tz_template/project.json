@@ -28,9 +28,13 @@
             "windows.js"
         ],
         "src/": [
+            "block.js",
+            "bullet.js",
+            "controller.js",
             "level.js",
             "loading.js",
-            "main.js"
+            "main.js",
+            "rubber.js"
         ],
         "../../eeditor/plugins/": [
             "physics.js",

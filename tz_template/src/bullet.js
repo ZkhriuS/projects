@@ -1,3 +1,6 @@
+
+//инициализация снежка
+
 function initBullet(wp) {
     var bullet = level.__addChildBox({
         __effect: 'tail',
@@ -15,21 +18,21 @@ function initBullet(wp) {
         }
     }).update();
     if (bullet.__ph_body) {
-        ph_Body.setVelocity(bullet.__ph_body, rubber.__velocity);
+        ph_Body.setVelocity(bullet.__ph_body, controller.__velocity);
     }
+
+    //счётчик разрушенных блоков от 1 броска
     controller.__breaks = 0;
-}
 
-bullet.__damage = (body) => {
-    return ((controller.__breaks) ? 1 : -1) * floor(
-        ph_Body.getVelocity(body).__length());
-}
-
-BUS.__addEventListener(
-    __ON_BULLET_OUT, e => {
-        if (bullet && bullet.__ph_body) {
-            levelData.__changeScore(bullet.__damage(bullet.__ph_body))
-            bullet.__removeFromParent();
+    //снежок сталкивается с любым объектом и исчезает
+    BUS.__addEventListener(
+        __ON_BULLET_OUT, e => {
+            if (bullet && bullet.__ph_body) {
+                levelData.__changeScore(controller.__damage(ph_Body.getSpeed(bullet.__ph_body)))
+                bullet.__removeFromParent();
+                BUS.__removeEventListener(e);
+            }
         }
-    }
-);
+    );
+}
+

@@ -33,8 +33,7 @@
             "controller.js",
             "level.js",
             "loading.js",
-            "main.js",
-            "rubber.js"
+            "main.js"
         ],
         "../../eeditor/plugins/": [
             "physics.js",

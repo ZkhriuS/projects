@@ -1,52 +1,43 @@
+
+//обработка действий игрока
+
 var MIN_SHOT_DEG = -75
     , MAX_SHOT_DEG = 30
     , controller = {
-        rubber(node) {
-            rubber = node;
+
+        //натянутая резинка придаёт импульс снежку
+        __pull(pullData) {
+            rubber.__parent.__rotate = -pullData.__angle;
+            rubber.__width = pullData.__strength;
+            this.__velocity = pullData.__velocity;
         },
 
-        userInputArea: {
-            __dragDist: 1,
-            __drag(x, y, dx, dy) {
-                rubber.__pull(mousePull(this, new Vector2(x, y)));
-            },
-            __dragStart() {
-                rubber.__killAllAnimations();
-            },
-            __dragEnd() {
-                playSound('punch');
-
-                // отпускаем резинку
-                rubber.__anim({
-                    __width: 10
-                }, 0.4, 0, easeElasticO);
-
-                initBullet(this.__worldPosition);
-            }
+        //расчёт очков броска в зависимости от попадания в цель
+        __damage(dmg) {
+            return ((this.__breaks) ? 1 : -1) * floor(dmg);
         }
-    }
+    };
 
 //игрок растягивает мышкой объект
-function mousePull(obj, vmouse) {
-    obj.__dv = vmouse.sub(obj.__worldPosition.__clone());
-    return {
+function MousePull(obj, vmouse) {
 
-        //величина натяжения ограничена областью объекта
-        __strength: clamp(obj.__dv.__length(), 0, obj.__size.__length()),
+    var dv = vmouse.sub(obj.__worldPosition.__clone())
+        , sz = obj.__size;
 
-        //можно ограничить броски в некоторых направлениях
-        __angle: clamp(
-            (obj.__dv.__angle() - PI) * RAD2DEG
-            , MIN_SHOT_DEG
-            , MAX_SHOT_DEG
-        ),
+    //величина натяжения ограничена областью объекта
+    this.__strength = clamp(dv.__length(), 0, mmin(sz.x, sz.y) / 2);
 
-        //результирующая скорость с учётом ограничений
-        __velocity: (new Vector2(
-            __strength * Math.cos(__angle * DEG2RAD)
-            , __strength * Math.sin(__angle * DEG2RAD)
-        )).__multiplyScalar(0.2)
+    //можно ограничить броски в некоторых направлениях
+    this.__angle = clamp(
+        (dv.__angle() - PI) * RAD2DEG
+        , MIN_SHOT_DEG
+        , MAX_SHOT_DEG
+    );
 
-    }
+    //результирующая скорость с учётом ограничений
+    this.__velocity = (new Vector2(
+        this.__strength * Math.cos(this.__angle * DEG2RAD)
+        , this.__strength * Math.sin(this.__angle * DEG2RAD)
+    )).__multiplyScalar(0.2);
 
 }

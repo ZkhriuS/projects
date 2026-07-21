@@ -3,13 +3,13 @@
 
 options.__soundDisabled = 0;
 
-var __ON_SCORE_CHANGED = '__ON_SCORE_CHANGED' // расположить константы в алфавитном порядке
-    , __ON_BULLET_OUT = '__ON_BULLET_OUT'
+var __ON_BULLET_OUT = '__ON_BULLET_OUT'
     , __ON_CONTINUE = '__ON_CONTINUE'
     , __ON_RETRY = '__ON_RETRY'
     , BIG_BLOCK_HP = 100
     , BREAK_BLOCK_HP = 50
-    , level;
+    , level
+    , rubber;
 
 function looperPostOne(f, delay) {
     if (f.__posted > 0) {
@@ -38,7 +38,6 @@ function relImpactSpeed(bodyA, bodyB) {
     return v.__length();
 }
 
-
 function show_win() {
 
     playSound('win');
@@ -66,10 +65,12 @@ function show_win() {
 
 }
 
+//урон от разбивания больших блоков
 function calculateDamage(speed, maxBreakDmg) {
     return floor(clamp((speed - 1) * (speed - 2), 0, maxBreakDmg));
 }
 
+//определяем поведение тела после столкновения
 function collisionBodyHandler(body, speed) {
     if (body) {
         if (body.__onCollision) body.__onCollision(speed);
@@ -95,15 +96,17 @@ function initBlocksCollision() {
 
 //определение параметров уровня
 function startLevel() {
-    level = levelData.__initLevel(1);
+    level = levelData.__initLevel();
     setTimeout(a => {
         level.update(1);
         initBlocksCollision();
+
         // проходим по уровню и инициализируем блоки
-        level.__traverse(initBlocks);
+        level.__traverse(initBlock);
     }, 0.01)
 }
 
+//переходы между уровнями
 function reloadLevel() {
     if (levelData.__number > 3) return;
     closeWindow('win');
@@ -111,16 +114,17 @@ function reloadLevel() {
     startLevel();
 }
 
+//события игры
 BUS.__addEventListeners(
     __ON_GAME_LOADED, a => {
         startLevel();
         return 1;
     },
-    __ON_CONTINUE, a => {
+    __ON_CONTINUE, b => {
         levelData.__number++;
         reloadLevel();
     },
-    __ON_RETRY, a => {
+    __ON_RETRY, c => {
         reloadLevel();
     }
 );

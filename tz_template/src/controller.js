@@ -12,10 +12,10 @@ var MIN_SHOT_DEG = -75
             this.__velocity = pullData.__velocity;
         },
 
-        //расчёт очков броска в зависимости от попадания в цель
-        __damage(dmg) {
-            return ((this.__breaks) ? 1 : -1) * floor(dmg);
+        __shot() {
+            levelData.__score.__total += levelData.__big_blocks * BIG_BLOCK_HP;
         }
+
     };
 
 //игрок растягивает мышкой объект
@@ -25,7 +25,7 @@ function MousePull(obj, vmouse) {
         , sz = obj.__size;
 
     //величина натяжения ограничена областью объекта
-    this.__strength = clamp(dv.__length(), 0, mmin(sz.x, sz.y) / 2);
+    this.__strength = clamp(dv.__length(), 0, mmin(sz.x, sz.y)); // /2
 
     //можно ограничить броски в некоторых направлениях
     this.__angle = clamp(

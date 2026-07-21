@@ -46,6 +46,10 @@ function show_win() {
     showWindow('win', wnd => {
         wnd.__setAliasesData({
 
+            stars(node) {
+                levelData.__setStars(node.__childs);
+            },
+
             button_continue: {
                 __onTap() {
                     BUS.__post(__ON_CONTINUE);

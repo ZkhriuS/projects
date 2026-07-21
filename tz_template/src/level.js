@@ -6,7 +6,17 @@ var levelData = {
     __number: 1,
 
     //счёт уровня
-    __score: 0,
+    __score: {
+
+        __reset() {
+            this.__current = 0;
+            this.__total = 0;
+        },
+
+        __calculate() {
+            return this.__current / this.__total * 100;
+        }
+    },
 
     //ледяные блоки
     __blocks: [],
@@ -14,12 +24,16 @@ var levelData = {
     //количество больших блоков
     __big_blocks: 0,
 
-    //количество очков для 1/2/3 звёзд за уровень
-    __star_goals: [],
+    //нужно пройти уровень не хуже, чем на [процент]% для 1/2/3 звёзд
+    __goals: {
+        1: [40, 60, 80],
+        2: [40, 60, 80],
+        3: [40, 60, 80],
+    },
 
     __initLevel() {
 
-        this.__score = 0;
+        this.__score.__reset();
         controller.__shots = 0;
         return scene
             .__addChildBox('level_' + this.__number)
@@ -27,14 +41,15 @@ var levelData = {
 
     },
 
+    //расчёт очков броска в зависимости от попадания в цель
     __changeScore(dscore) {
 
-        this.__score += dscore;
+        if (controller.__breaks) this.__score.__current += dscore;
 
         if (level) {
             level.__setAliasesData({
                 score_text: {
-                    __text: levelData.__score
+                    __text: levelData.__score.__current
                 }
             });
         }
@@ -77,6 +92,12 @@ var levelData = {
             }, 1)
         }
 
+    },
+
+    __setStars(stars) {
+        for (var i = 0; i < stars.length; i++) {
+            stars[i].__visible = (this.__score.__calculate() > this.__goals[this.__number][i]);
+        }
     }
 }
 

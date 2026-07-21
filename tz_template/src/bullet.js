@@ -23,12 +23,13 @@ function initBullet(wp) {
 
     //счётчик разрушенных блоков от 1 броска
     controller.__breaks = 0;
+    controller.__shot();
 
     //снежок сталкивается с любым объектом и исчезает
     BUS.__addEventListener(
         __ON_BULLET_OUT, e => {
             if (bullet && bullet.__ph_body) {
-                levelData.__changeScore(controller.__damage(ph_Body.getSpeed(bullet.__ph_body)))
+                levelData.__changeScore(floor(ph_Body.getSpeed(bullet.__ph_body)));
                 bullet.__removeFromParent();
                 BUS.__removeEventListener(e);
             }

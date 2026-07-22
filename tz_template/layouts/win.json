@@ -4,8 +4,8 @@
     "name": "win",
     "__alpha": 0.8,
     "__size": [
-      2,
-      2,
+      1,
+      1,
       1,
       1
     ],
@@ -238,7 +238,7 @@
           "__text": "play",
           "__fontface": "ObelixPro"
         },
-        "__y": -50,
+        "__y": 50,
         "__keyframes": {
           "loop": 0,
           "__loopDisabled": 1,
@@ -254,7 +254,7 @@
               ],
               "84": [
                 0,
-                -50,
+                50,
                 1,
                 1,
                 0
@@ -285,7 +285,7 @@
           "__text": "try_again",
           "__fontface": "ObelixPro"
         },
-        "__y": 50,
+        "__y": 150,
         "__keyframes": {
           "loop": 0,
           "__loopDisabled": 1,
@@ -301,7 +301,7 @@
               ],
               "84": [
                 0,
-                50,
+                150,
                 1,
                 1,
                 0

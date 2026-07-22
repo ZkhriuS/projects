@@ -7,7 +7,13 @@
     ],
     "__childs": {
       "sky": {
-        "__color": "#7ea2ff",
+        "__img": "bg_level_3.jpg",
+        "__corner": {
+          "0": 1280,
+          "1": 731,
+          "2": 0.92,
+          "3": 0.89
+        },
         "__size": [
           1,
           1,
@@ -16,7 +22,7 @@
         ],
         "__childs": {
           "body": {
-            "__img": "snowman",
+            "__img": "snowman.png",
             "ha": 2,
             "va": 1,
             "sha": 0,
@@ -26,7 +32,7 @@
               80
             ],
             "__ofs": [
-              105,
+              150,
               -96,
               -15
             ],
@@ -50,8 +56,9 @@
                 "__childs": {
                   "branch_l": {
                     "__color": 0.3424,
+                    "__selectable": false,
                     "__rotate": 76,
-                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho",
+                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho.png",
                     "__size": [
                       45,
                       45
@@ -59,13 +66,14 @@
                     "__ofs": [
                       23,
                       7,
-                      -5
+                      -1
                     ]
                   },
                   "branch_r": {
                     "__color": 0.3424,
+                    "__selectable": false,
                     "__rotate": -69,
-                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho",
+                    "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho.png",
                     "sha": 1,
                     "sva": 0,
                     "__size": [
@@ -81,21 +89,24 @@
                     ]
                   },
                   "_2": {
-                    "__color": 0.3424,
+                    "__img": "circle1",
+                    "ha": 1,
+                    "va": 1,
                     "__size": [
                       25,
                       25
                     ],
-                    "__z": -24,
+                    "__z": -10,
                     "__childs": {
                       "rubber": {
                         "__color": "#362207",
-                        "sha": 2,
+                        "sha": 2.4000000000000004,
                         "sva": 1,
                         "__size": [
-                          100,
+                          88,
                           18
-                        ]
+                        ],
+                        "__z": 3
                       }
                     }
                   }
@@ -124,31 +135,10 @@
             "__img": "block_1",
             "__ofs": [
               296,
-              -16
+              -42
             ]
           },
-          "ground": {
-            "__color": "#296b22",
-            "__physics": {
-              "__isStatic": true,
-              "__friction": 10,
-              "__frictionAir": 1,
-              "__frictionStatic": 50,
-              "__restitution": 0,
-              "__density": 1,
-              "__bodyType": 0
-            },
-            "__size": [
-              1234,
-              211
-            ],
-            "__ofs": [
-              0,
-              395,
-              -10
-            ]
-          },
-          "_2": {
+          "_1": {
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -161,7 +151,23 @@
             "__img": "block_2",
             "__ofs": [
               299,
-              86
+              60
+            ]
+          },
+          "_2": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "block_3",
+            "__ofs": [
+              192,
+              181
             ]
           },
           "_3": {
@@ -176,27 +182,11 @@
             },
             "__img": "block_3",
             "__ofs": [
-              192,
-              207
+              408,
+              181
             ]
           },
           "_4": {
-            "__physics": {
-              "__isStatic": false,
-              "__friction": 10,
-              "__frictionAir": 1,
-              "__frictionStatic": 50,
-              "__restitution": 0,
-              "__density": 1,
-              "__bodyType": 0
-            },
-            "__img": "block_3",
-            "__ofs": [
-              408,
-              207
-            ]
-          },
-          "_5": {
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -213,8 +203,25 @@
             ],
             "__ofs": [
               299,
-              223
+              197
             ]
+          },
+          "ground": {
+            "__color": "#296b22",
+            "__physics": {
+              "__isStatic": true,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__size": [
+              1234,
+              120
+            ],
+            "__y": 324
           },
           "wall": {
             "__color": "#296b22",
@@ -228,11 +235,11 @@
               "__bodyType": 0
             },
             "__size": [
-              65,
+              100,
               689
             ],
             "__ofs": [
-              585,
+              567,
               -44
             ]
           }
@@ -242,14 +249,10 @@
         "ha": 1,
         "va": 1,
         "__size": [
-          567,
-          100
+          1234,
+          768
         ],
-        "__ofs": [
-          0,
-          349,
-          -15
-        ],
+        "__z": -15,
         "__childs": {
           "shot_count_text": {
             "__color": 0.9395,
@@ -257,8 +260,8 @@
             "sva": 1,
             "__blending": 0,
             "__size": [
-              0.45,
-              0.6,
+              0.2,
+              0.08,
               1,
               1
             ],
@@ -268,7 +271,11 @@
               "__text": "0",
               "__fontface": "ObelixPro"
             },
-            "__z": -10
+            "__ofs": [
+              300,
+              320,
+              -10
+            ]
           },
           "score_text": {
             "__color": 0.9412,
@@ -276,8 +283,8 @@
             "sva": 1,
             "__blending": 0,
             "__size": [
-              0.45,
-              0.6,
+              0.2,
+              0.08,
               1,
               1
             ],
@@ -287,7 +294,11 @@
               "__text": "0",
               "__fontface": "ObelixPro"
             },
-            "__z": -10
+            "__ofs": [
+              -300,
+              320,
+              -10
+            ]
           }
         }
       }

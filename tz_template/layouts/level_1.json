@@ -264,10 +264,9 @@
             ],
             "__text": {
               "__color": 0,
-              "__fontsize": 32,
-              "__lineWidth": -1,
+              "__fontsize": 40,
               "__text": "0",
-              "__fontWeight": 1
+              "__fontface": "ObelixPro"
             },
             "__z": -10
           },
@@ -284,10 +283,9 @@
             ],
             "__text": {
               "__color": 0,
-              "__fontsize": 32,
-              "__lineWidth": -1,
+              "__fontsize": 40,
               "__text": "0",
-              "__fontWeight": 1
+              "__fontface": "ObelixPro"
             },
             "__z": -10
           }

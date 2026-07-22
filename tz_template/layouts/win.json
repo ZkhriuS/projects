@@ -39,13 +39,18 @@
       "title": {
         "sva": 0.9,
         "__size": [
-          431,
-          90
+          1000,
+          170
         ],
         "__scaleF": 0,
         "__text": {
-          "__fontsize": 80,
-          "__text": "You Win!"
+          "__color": "#d8cfcf",
+          "__fontsize": 150,
+          "__lineWidth": 15,
+          "__lineColor": "#832aa0",
+          "__text": "YOU WIN!",
+          "__autoRecalcOnResize": true,
+          "__fontface": "FredokaOne_Regular"
         },
         "__y": -154,
         "__keyframes": {
@@ -229,7 +234,9 @@
         "__scaleF": 0,
         "__text": {
           "__color": "#832aa0",
-          "__text": "play"
+          "__fontsize": 50,
+          "__text": "play",
+          "__fontface": "ObelixPro"
         },
         "__y": -50,
         "__keyframes": {
@@ -274,7 +281,9 @@
         "__scaleF": 0,
         "__text": {
           "__color": "#dfde44",
-          "__text": "try_again"
+          "__fontsize": 50,
+          "__text": "try_again",
+          "__fontface": "ObelixPro"
         },
         "__y": 50,
         "__keyframes": {

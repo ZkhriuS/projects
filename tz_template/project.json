@@ -84,6 +84,9 @@
         [
             "font",
             [
+                "FredokaOne-Regular",
+                "ObelixPro-cyr",
+                "ObelixPro",
                 "Roboto-Thin"
             ]
         ],

@@ -31,6 +31,19 @@ var levelData = {
         3: [40, 60, 80],
     },
 
+    __win: {
+        __phrase: ["YOU WIN!", "NICE!", "AWESOME!", "INCREDIBLE!"],
+        __set(g) {
+            this.__stars = 0;
+            for (var i = 0; i < g.length; i++) {
+                this.__stars += (levelData.__score.__calculate() > g[i]);
+            }
+        },
+        __congratulate() {
+            return this.__phrase[this.__stars];
+        }
+    },
+
     __initLevel() {
 
         this.__score.__reset();
@@ -88,15 +101,16 @@ var levelData = {
 
         if (this.__big_blocks == 0) {
             setTimeout(() => {
+                this.__win.__set(this.__goals[this.__number]);
                 show_win();
             }, 1)
         }
 
     },
 
-    __setStars(stars) {
+    __showStars(stars) {
         for (var i = 0; i < stars.length; i++) {
-            stars[i].__visible = (this.__score.__calculate() > this.__goals[this.__number][i]);
+            stars[i].__visible = (this.__win.__stars > i);
         }
     }
 }

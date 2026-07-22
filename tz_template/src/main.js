@@ -47,7 +47,11 @@ function show_win() {
         wnd.__setAliasesData({
 
             stars(node) {
-                levelData.__setStars(node.__childs);
+                levelData.__showStars(node.__childs);
+            },
+
+            title: {
+                __text: levelData.__win.__congratulate()
             },
 
             button_continue: {

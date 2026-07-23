@@ -38,15 +38,15 @@
             ],
             "__childs": {
               "userInputArea": {
-                "__color": "#599d52",
-                "__alpha": 0.7,
+                "__color": "#35e6ff",
+                "__img": "input_area",
                 "ha": 1,
                 "va": 1,
                 "sha": 1,
                 "sva": 1,
                 "__size": [
-                  175,
-                  175
+                  200,
+                  200
                 ],
                 "__ofs": [
                   -78,
@@ -56,7 +56,6 @@
                 "__childs": {
                   "branch_l": {
                     "__color": 0.3424,
-                    "__selectable": false,
                     "__rotate": 76,
                     "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho.png",
                     "__size": [
@@ -66,12 +65,11 @@
                     "__ofs": [
                       23,
                       7,
-                      -1
+                      -5
                     ]
                   },
                   "branch_r": {
                     "__color": 0.3424,
-                    "__selectable": false,
                     "__rotate": -69,
                     "__img": "isolated-wooden-bare-branch-shaped-like-a-slingsho.png",
                     "sha": 1,
@@ -84,8 +82,8 @@
                     ],
                     "__ofs": [
                       124,
-                      69,
-                      -3
+                      80,
+                      -2
                     ]
                   },
                   "_2": {
@@ -99,14 +97,21 @@
                     "__z": -10,
                     "__childs": {
                       "rubber": {
-                        "__color": "#362207",
-                        "sha": 2.4000000000000004,
+                        "__anchor": {
+                          "x": 128
+                        },
+                        "__img": "rubber",
+                        "sha": 2,
                         "sva": 1,
                         "__size": [
-                          88,
-                          18
+                          256,
+                          5
                         ],
-                        "__z": 3
+                        "__ofs": [
+                          -13,
+                          0,
+                          3
+                        ]
                       }
                     }
                   }

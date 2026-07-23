@@ -21,9 +21,6 @@ var levelData = {
     //ледяные блоки
     __blocks: [],
 
-    //количество больших блоков
-    __big_blocks: 0,
-
     //нужно пройти уровень не хуже, чем на [процент]% для 1/2/3 звёзд
     __goals: {
         1: [40, 60, 80],
@@ -47,6 +44,7 @@ var levelData = {
     __initLevel() {
 
         this.__score.__reset();
+        this.__big_blocks = 0;
         controller.__shots = 0;
         return scene
             .__addChildBox('level_' + this.__number)
@@ -168,5 +166,12 @@ var layout = {
                 rubber.__parent.__visible = 0;
             }, 0.4)
         }
+    },
+
+    retry: {
+        __onTap() {
+            BUS.__post(__ON_RETRY);
+        },
+        __onTapHighlight: 1
     }
 }

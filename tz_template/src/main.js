@@ -119,7 +119,8 @@ function startLevel() {
 //переходы между уровнями
 function reloadLevel() {
     if (levelData.__number > 3) return;
-    closeWindow('win');
+    if (windowManager.__hasOpenedWindow())
+        closeWindow('win');
     level.__clearChildNodes();
     startLevel();
 }

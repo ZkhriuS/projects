@@ -368,6 +368,26 @@
               -330,
               -10
             ]
+          },
+          "retry": {
+            "__color": "#b8924e",
+            "sha": 2,
+            "sva": 0,
+            "__blending": 0,
+            "__size": [
+              80,
+              80
+            ],
+            "__text": {
+              "__fontsize": 20,
+              "__text": "retry",
+              "__fontface": "ObelixPro"
+            },
+            "__ofs": [
+              -10,
+              20,
+              -10
+            ]
           }
         }
       }

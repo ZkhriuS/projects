@@ -6,9 +6,9 @@ var MIN_SHOT_DEG = -75
     , controller = {
 
         //натянутая резинка придаёт импульс снежку
-        __pull(pullData) {
+        __pull(pullData, area_width) {
             rubber.__parent.__rotate = -pullData.__angle;
-            rubber.__width = pullData.__strength;
+            arrow.__x = rubber.cropx = -clamp(pullData.__strength, 0, area_width / 2);
             this.__velocity = pullData.__velocity;
         },
 

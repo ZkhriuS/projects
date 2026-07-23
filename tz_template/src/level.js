@@ -137,26 +137,36 @@ function initBlock(node) {
 var layout = {
     rubber(node) {
         rubber = node;
+        rubber.__parent.__visible = 0;
+    },
+
+    arrow(node) {
+        arrow = node;
     },
 
     userInputArea: {
         __dragDist: 1,
         __drag(x, y, dx, dy) {
             var mp = new MousePull(this, new Vector2(x, y));
-            controller.__pull(mp);
+            controller.__pull(mp, this.__width);
         },
         __dragStart() {
             rubber.__killAllAnimations();
+            rubber.__parent.__visible = 1;
         },
         __dragEnd() {
             playSound('punch');
 
             // отпускаем резинку
             rubber.__anim({
-                __width: 10
+                cropx: 0
             }, 0.4, 0, easeElasticO);
 
             initBullet(this.__worldPosition);
+
+            setTimeout(() => {
+                rubber.__parent.__visible = 0;
+            }, 0.4)
         }
     }
 }

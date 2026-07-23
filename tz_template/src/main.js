@@ -9,7 +9,8 @@ var __ON_BULLET_OUT = '__ON_BULLET_OUT'
     , BIG_BLOCK_HP = 100
     , BREAK_BLOCK_HP = 50
     , level
-    , rubber;
+    , rubber
+    , arrow;
 
 function looperPostOne(f, delay) {
     if (f.__posted > 0) {

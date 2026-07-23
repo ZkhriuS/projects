@@ -38,12 +38,13 @@
             ],
             "__childs": {
               "userInputArea": {
-                "__color": "#35e6ff",
+                "__alpha": 0.25,
                 "__img": "input_area",
                 "ha": 1,
                 "va": 1,
                 "sha": 1,
                 "sva": 1,
+                "__blending": 3,
                 "__size": [
                   200,
                   200
@@ -87,30 +88,39 @@
                     ]
                   },
                   "_2": {
-                    "__img": "circle1",
+                    "__color": "#2ee1ef",
+                    "__img": "controller",
                     "ha": 1,
                     "va": 1,
                     "__size": [
-                      25,
-                      25
+                      200,
+                      200
                     ],
-                    "__z": -10,
                     "__childs": {
+                      "arrow": {
+                        "__img": "pointer",
+                        "__size": [
+                          30,
+                          30
+                        ],
+                        "__x": -100
+                      },
                       "rubber": {
                         "__anchor": {
                           "x": 128
                         },
                         "__img": "rubber",
-                        "sha": 2,
+                        "sha": 1,
                         "sva": 1,
+                        "cropx": -100,
                         "__size": [
                           256,
                           5
                         ],
                         "__ofs": [
-                          -13,
+                          -128,
                           0,
-                          3
+                          -10
                         ]
                       }
                     }

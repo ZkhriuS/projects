@@ -14,6 +14,8 @@ var MIN_SHOT_DEG = -75
 
         __shot() {
             levelData.__score.__total += levelData.__big_blocks * BIG_BLOCK_HP;
+            this.__shots++;
+            BUS.__post(__ON_SHOT);
         }
 
     };

@@ -270,7 +270,7 @@
         "__z": -15,
         "__childs": {
           "shot_count_text": {
-            "__color": 0.9395,
+            "__color": "#b8914a",
             "sha": 0,
             "sva": 1,
             "__blending": 0,
@@ -281,7 +281,7 @@
               1
             ],
             "__text": {
-              "__color": 0,
+              "__color": "#f375df",
               "__fontsize": 40,
               "__text": "0",
               "__fontface": "ObelixPro"
@@ -293,7 +293,7 @@
             ]
           },
           "score_text": {
-            "__color": 0.9412,
+            "__color": "#b8914a",
             "sha": 2,
             "sva": 1,
             "__blending": 0,
@@ -304,7 +304,7 @@
               1
             ],
             "__text": {
-              "__color": 0,
+              "__color": "#2fe1f0",
               "__fontsize": 40,
               "__text": "0",
               "__fontface": "ObelixPro"
@@ -312,6 +312,28 @@
             "__ofs": [
               -300,
               320,
+              -10
+            ]
+          },
+          "shots": {
+            "__color": "#b8924e",
+            "sha": 0,
+            "sva": 1,
+            "__blending": 0,
+            "__size": [
+              0.2,
+              0.08,
+              1,
+              1
+            ],
+            "__text": {
+              "__fontsize": 40,
+              "__text": "0",
+              "__fontface": "ObelixPro"
+            },
+            "__ofs": [
+              485,
+              -330,
               -10
             ]
           }

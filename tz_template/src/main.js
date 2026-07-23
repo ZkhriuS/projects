@@ -6,6 +6,7 @@ options.__soundDisabled = 0;
 var __ON_BULLET_OUT = '__ON_BULLET_OUT'
     , __ON_CONTINUE = '__ON_CONTINUE'
     , __ON_RETRY = '__ON_RETRY'
+    , __ON_SHOT = '__ON_SHOT'
     , BIG_BLOCK_HP = 100
     , BREAK_BLOCK_HP = 50
     , level
@@ -135,5 +136,12 @@ BUS.__addEventListeners(
     },
     __ON_RETRY, c => {
         reloadLevel();
+    },
+    __ON_SHOT, a => {
+        level.__setAliasesData({
+            shots: {
+                __text: controller.__shots
+            }
+        })
     }
 );

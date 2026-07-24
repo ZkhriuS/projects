@@ -301,7 +301,7 @@
         ],
         "__z": -15,
         "__childs": {
-          "shot_count_text": {
+          "strength": {
             "__color": "#b8914a",
             "sha": 0,
             "sva": 1,

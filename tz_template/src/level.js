@@ -146,7 +146,7 @@ var layout = {
         __dragDist: 1,
         __drag(x, y, dx, dy) {
             var mp = new MousePull(this, new Vector2(x, y));
-            controller.__pull(mp, this.__width);
+            controller.__pull(mp);
         },
         __dragStart() {
             rubber.__killAllAnimations();

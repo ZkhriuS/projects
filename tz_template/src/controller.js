@@ -6,10 +6,15 @@ var MIN_SHOT_DEG = -75
     , controller = {
 
         //натянутая резинка придаёт импульс снежку
-        __pull(pullData, area_width) {
+        __pull(pullData) {
             rubber.__parent.__rotate = -pullData.__angle;
-            arrow.__x = rubber.cropx = -clamp(pullData.__strength, 0, area_width / 2);
+            arrow.__x = rubber.cropx = -pullData.__strength;
             this.__velocity = pullData.__velocity;
+            level.__setAliasesData({
+                strength: {
+                    __text: floor(pullData.__strength)
+                }
+            });
         },
 
         __shot() {
@@ -27,7 +32,7 @@ function MousePull(obj, vmouse) {
         , sz = obj.__size;
 
     //величина натяжения ограничена областью объекта
-    this.__strength = clamp(dv.__length(), 0, mmin(sz.x, sz.y)); // /2
+    this.__strength = clamp(dv.__length(), 0, mmin(sz.x, sz.y) / 2);
 
     //можно ограничить броски в некоторых направлениях
     this.__angle = clamp(
